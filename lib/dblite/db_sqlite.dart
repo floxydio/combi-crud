@@ -48,10 +48,22 @@ class DatabaseHelper {
           ''');
   }
 
-  Future<int> insert(Map<String, dynamic> row) async {
-    print(row);
+  Future<int> insert(Map<String, dynamic> formData) async {
+    print(formData);
     Database? db = await instance.database;
-    return await db!.insert(table, row);
+    return await db!.insert(table, formData);
+  }
+
+  Future<int> insertByModel(TodoModel formData) async {
+    print(formData);
+    Database? db = await instance.database;
+    return await db!.insert(table, {
+      'activity': formData.activity,
+      'description': formData.description,
+      'time': formData.time,
+      'day': formData.day,
+      'isDone': formData.isDone,
+    });
   }
 
   Future<List<TodoModel>> queryAllRows() async {
@@ -64,6 +76,8 @@ class DatabaseHelper {
   }
 
   Future<int> update(Map<String, dynamic> row, int id) async {
+    print("Id: $id");
+    print("Row: $row");
     Database? db = await instance.database;
     return await db!
         .update(table, row, where: '$columnId = ?', whereArgs: [id]);

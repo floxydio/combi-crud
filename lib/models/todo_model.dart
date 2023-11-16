@@ -7,7 +7,7 @@ class TodoModel {
   final int isDone;
 
   TodoModel(
-      {required this.id,
+      {this.id = 0,
       required this.activity,
       required this.description,
       required this.time,
