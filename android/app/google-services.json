@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "482506605190",
+    "project_id": "combitest-3f398",
+    "storage_bucket": "combitest-3f398.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482506605190:android:f9aee96df5af225f948707",
+        "android_client_info": {
+          "package_name": "com.example.sqlitetodo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_PLFVV79WrMsV2OYyCBk8FeMq3yqOSo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

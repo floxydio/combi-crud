@@ -16,4 +16,9 @@ class SharedPrefs {
     final prefs = await SharedPreferences.getInstance();
     return prefs.clear();
   }
+
+  static Future<bool> clearByKey(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.remove(key);
+  }
 }

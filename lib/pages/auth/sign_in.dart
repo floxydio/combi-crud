@@ -1,8 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sqlitetodo/constant/sizing.dart';
 import 'package:sqlitetodo/helper/shared_pref.dart';
 import 'package:sqlitetodo/pages/home/home_todo.dart';
+import 'package:sqlitetodo/view_model/user_loginvm.dart';
 
 class SignInAuth extends StatefulWidget {
   const SignInAuth({super.key});
@@ -89,27 +91,29 @@ class _SignInAuthState extends State<SignInAuth> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.redAccent),
                   onPressed: () {
-                    if (usernameController.text == "admin" &&
-                        passwordController.text == "123") {
-                      SharedPrefs.setToken("token", "eyJ111").then((value) => {
-                            if (value)
-                              {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const HomePageNoVM()))
-                              }
-                            else
-                              print("Gagal Save")
-                          });
-                    } else {
-                      showDialog(
-                          context: context,
-                          builder: (context) => const AlertDialog(
-                                  content: Center(
-                                child: Text("Username atau password salah"),
-                              )));
-                    }
+                    // if (usernameController.text == "admin" &&
+                    //     passwordController.text == "123") {
+                    //   SharedPrefs.setToken("token", "eyJ111").then((value) => {
+                    //         if (value)
+                    //           {
+                    //             Navigator.pushReplacement(
+                    //                 context,
+                    //                 MaterialPageRoute(
+                    //                     builder: (_) => const HomePageNoVM()))
+                    //           }
+                    //         else
+                    //           print("Gagal Save")
+                    //       });
+                    // } else {
+                    //   showDialog(
+                    //       context: context,
+                    //       builder: (context) => const AlertDialog(
+                    //               content: Center(
+                    //             child: Text("Username atau password salah"),
+                    //           )));
+                    // }
+
+                    Provider.of<AuthViewModel>(context,listen:false).signIn(usernameController.text, passwordController.text, context);
                   },
                   child: const Text("Sign In")),
             )
